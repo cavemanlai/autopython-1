@@ -1,0 +1,44 @@
+L[1]
+L[0]
+L[-1]
+L[0:-1]    #正向取值
+L[1][2]
+len(L)
+L[1] = value
+L1 + L2
+L * 3
+del L[1]
+L.remove(value)
+range(len(L))
+    for i in range(len(L))
+        print(str(i),L[i])
+L[1,2,3]
+    A,B,C = L
+L.index()
+L.append()
+L.insert()
+L.sort()    #方法无返回值，print（L.sort())为None
+print(L[random.randict(0,len(L)-1)])
+('hello',)    #有',',是tuple，无','，是str
+L1=[1，2，3]
+    L2 = L1
+    L2[1] = 5
+    L2 = [1，5，3]
+    L1 = [1，5, 3]   #变量包含对列表值的引用，而不是列标值本身。但对于字符串和整数值，变量就包含了字符串或整数值。
+    L3 = copy.copy(L1)    #修改L3列表值不会影响L1
+copy.copy() & copy.deepcopy()
+    import copy
+    # copy 和 deepcopy 的区别
+    l1 = [1, 2, 3, ['a', 'b']]
+    # copy 浅复制，不会拷贝其子对象，修改子对象，将受影响
+    l2 = copy.copy(l1)
+    # deepcopy 深复制，将拷贝其子对象，修改子对象，将不受影响
+    l3 = copy.deepcopy(l1)
+    l1[3].append('c')
+    print 'l1:', l1
+    print 'l2:', l2
+    print 'l3:', l3
+    output:
+    l1: [1, 2, 3, ['a', 'b', 'c']]
+    l2: [1, 2, 3, ['a', 'b', 'c']]
+    l3: [1, 2, 3, ['a', 'b']]
