@@ -1,3 +1,4 @@
+【ACT4】
 L[1]
 L[0]
 L[-1]
@@ -42,3 +43,20 @@ copy.copy() & copy.deepcopy()
     l1: [1, 2, 3, ['a', 'b', 'c']]
     l2: [1, 2, 3, ['a', 'b', 'c']]
     l3: [1, 2, 3, ['a', 'b']]
+
+
+【ACT5】
+dict = {'a': 'A', 'b': 'B'}
+dict.values()
+dict.keys()
+    dict_keys(['b', 'a'])
+dict.items()
+    dict_items([('b', 'B'), ('a', 'A')])
+for k,y in dict.items():
+    print(key,v)
+    output:b,B
+           a,A
+dict.get('a',0)
+    'A'
+dict.get('1',0)
+    0
