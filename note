@@ -60,3 +60,5 @@ dict.get('a',0)
     'A'
 dict.get('1',0)
     0
+dict.setdefault()
+pprint    #漂亮输出，并排序
