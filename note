@@ -62,3 +62,38 @@ dict.get('1',0)
     0
 dict.setdefault()
 pprint    #漂亮输出，并排序
+
+
+【ACT6】
+l = 'Helloword'
+    l[1:5]
+    output:'ello'
+for i in l:
+if hello (not)in l:
+l.lower()
+l.upper()    #不改变l本身，如要改变l，需要 l = l.upper，此类方法均如是
+l.isupper()    #有一个大写字母即为True
+    True
+l.islower()    #有一个小写字母即为True
+    True
+l.isalpha()
+l.isalnum()
+l.isdecimal()
+l.isspace()
+l.istitle()
+l.startswith('Hello')
+    output:True
+l.endswith('world')
+    output:True
+'!'.join(['a','b','c'])    #列表合成为字符串
+    output:'a!b!c'
+l.split('e')
+    out:['h', 'lloworld']    #字符串拆分成列表
+l.rjust(11)    #因为l本身为10个字符，所以需最小11才能空1位
+    out:' helloworld'
+l.ljust(12,'*')
+    out:'helloworld**'
+l.center(11)
+    out:' helloworld'
+l.center(12,'=')
+    out:'=helloworld='
