@@ -15,7 +15,7 @@ range(len(L))
         print(str(i),L[i])
 L[1,2,3]
     A,B,C = L
-L.index()
+L.index()  #返回所找值的下标
 L.append()
 L.insert()
 L.sort()    #方法无返回值，print（L.sort())为None
@@ -87,6 +87,8 @@ l.endswith('world')
     output:True
 '!'.join(['a','b','c'])    #列表合成为字符串
     output:'a!b!c'
+'!'.john('hello world haha'.split())
+    hello!world!haha    #没有split为h!e!l!l!o! !w!...
 l.split('e')
     out:['h', 'lloworld']    #字符串拆分成列表
 l.rjust(11)    #因为l本身为10个字符，所以需最小11才能空1位
@@ -97,3 +99,22 @@ l.center(11)
     out:' helloworld'
 l.center(12,'=')
     out:'=helloworld='
+l.strip()   #只删除字符串收尾两端外的空格，例如' hello world '，中间空格保留
+l.lstrip()
+l.rstrip()
+pyperclip    #复制粘贴模块
+pyperclip.copy('hello')  #处理字符串
+pyperclip.paste()
+创建bat批处理工具
+    新建文本文件，输入
+    @py.exe C:文件路径 %*
+    @pause
+    保存为.bat文件，放到C:\windows下，直接WIN+R中运行py文件名即可
+
+
+【ACT7】
+print(r'\n')  #r代表禁止字符串转译
+import re
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('my number is 425-222-2222')
+print(mo.group())
