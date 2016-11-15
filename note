@@ -118,3 +118,68 @@ import re
 phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
 mo = phoneNumRegex.search('my number is 425-222-2222')
 print(mo.group())
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')
+mo = phoneNumRegex.search('my number is 425-222-2222')
+print(mo.group(0))
+    out:425-222-2222
+print(mo.group(1))
+    out:425
+mo.group(2)或3,out:222或2222
+mo.groups()
+    out:('425','222','2222')
+a,b,c = mo.groups()
+    print(a)
+        out:425
+    print(b)
+        out:222
+'A|B'  'B LLL A' out:B    #输出先检索到的
+serach()    #只返回先检索到的
+findall()    #返回所有检索到的，且返回一个列表
+phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
+mo = phoneNumRegex.search('my number is 425-222-2222 and 111-222-3333')
+print(mo.findall())
+    ['425-222-2222', '111-222-3333']
+
+phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')    #有分组
+mo = phoneNumRegex.search('my number is 425-222-2222 and 111-222-3333')
+print(mo.findall())
+    out:[('425','222','2222'),('111','222','3333')]
+
+A(B|C)  'AC LLL B' out:AC且group(1) out:C
+A(B)?C  'AC LLL B' out:AC  'ABC LLL B' out:ABC  #()?表示()内内容出现了0次或1次
+    （）*  #*代表出现0次或多次
+    （）+  #+代表匹配1次或多次
+    （）{n,m}  #{}表示出现特定n次，或n到m次，例如{3}为3次，{3,5}为3到5次，{3，}为3次或以上，{,5}为0到5次
+
+greedyHaRegex = re.compile(r'(Ha){3,5}')
+mo = greedyHaRegex.search('HaHaHaHaHa')
+print(mo.group())
+    out:HaHaHaHaHa    #贪心匹配
+greedyHaRegex = re.compile(r'(Ha){3,5}?')
+mo = greedyHaRegex.search('HaHaHaHaHa')
+print(mo.group())
+    out:HaHaHa    #{}后加?，即为费贪心匹配，匹配花括号内最小值
+
+\d  数字
+\D  数字以外所有
+\w  字母，数字，下划线
+\W  除字母，数字，下划线以外，所有
+\s  空格，制表符，回车
+\S  除空格，制表符，回车之外所有
+
+[aeiouAEIOU]    #括号内元素为或的关系
+[^aeiouAEIOU]    #字符分类中的^符号代表  非
+^aeiou$    #以aeiou开始且结束，绝对匹配，子集不符合规则
+.    #通配符，匹配除换行之外的任意字符
+.*    #匹配任意次任意字符，除换行外
+
+(r'.*',re.DOTALL)  #句点.可匹配换行符，即\n,没有re.DOTALL时，'.*'只匹配到换行符之前
+(r'ab',re.I)    #不区分大小写
+
+names = re.compile(r'Agent \w+')
+names.sub('censored','Agent Alice gave ...')    #sub()为替换
+    out:'censored gave ...'
+names = re.compile(r'Agent (\w)\w*')
+names.sub(r'\1****','Agent Alice gave ...')    #\1代表group(1)的输出，及(\w)代表的Alice的A
+    out:'A**** gave ...'
