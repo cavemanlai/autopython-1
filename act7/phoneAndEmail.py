@@ -1,5 +1,14 @@
-import re
-phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
-mo = phoneNumRegex.search('my number is 111-222-3333')
-print(mo.group())
+#! python3
+# phoneAndEmail.py - Finds phone number and email addresses on the clipboard
 
+import pyperclip
+import re
+
+phoneRegex = re.compile(r'''(
+(\d{3}|\(\d{3}\))?  # area code
+(\s|-|\.)?          # separator
+(\d{3})             # first 3 digits
+(\s|-|\.)           # separator
+(\d{4})             # last 4 digits
+(\s*(ext|x|ext.)\s*(\d{2,5}))
+)''')
