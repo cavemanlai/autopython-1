@@ -4,13 +4,13 @@
 import pyperclip
 import re
 
-phoneRegex = re.compile(r'''(
-(\d{3}|\(\d{3}\))?  # area code
-(\s|-|\.)?          # separator
-(\d{3})             # first 3 digits
-(\s|-|\.)           # separator
-(\d{4})             # last 4 digits
-(\s*(ext|x|ext.)\s*(\d{2,5}))?  #extension
+phoneRegex = re.compile(r'''(   #group(1)=group(0)
+(\d{3}|\(\d{3}\))?  # area code group(2)
+(\s|-|\.)?          # separator group(3)
+(\d{3})             # first 3 digits group(4)
+(\s|-|\.)           # separator group(5)
+(\d{4})             # last 4 digits group(6)
+(\s*(ext|x|ext.)\s*(\d{2,5}))?  #extension group(7(8)(9))
 )''', re.VERBOSE)
 
 emailRegex = re.compile(r'''(

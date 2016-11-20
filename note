@@ -137,8 +137,8 @@ a,b,c = mo.groups()
 serach()    #只返回先检索到的
 findall()    #返回所有检索到的，且返回一个列表
 phoneNumRegex = re.compile(r'\d\d\d-\d\d\d-\d\d\d\d')
-mo = phoneNumRegex.search('my number is 425-222-2222 and 111-222-3333')
-print(mo.findall())
+mo = phoneNumRegex.findall('my number is 425-222-2222 and 111-222-3333')
+print(mo)
     ['425-222-2222', '111-222-3333']
 
 phoneNumRegex = re.compile(r'(\d\d\d)-(\d\d\d)-(\d\d\d\d)')    #有分组
@@ -183,3 +183,5 @@ names.sub('censored','Agent Alice gave ...')    #sub()为替换
 names = re.compile(r'Agent (\w)\w*')
 names.sub(r'\1****','Agent Alice gave ...')    #\1代表group(1)的输出，及(\w)代表的Alice的A
     out:'A**** gave ...'
+
+
