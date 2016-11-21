@@ -185,3 +185,39 @@ names.sub(r'\1****','Agent Alice gave ...')    #\1代表group(1)的输出，及(
     out:'A**** gave ...'
 
 
+【ACT 8】
+os.path.join('usr', 'bin', 'spam')
+    out:'usr\\bin\\spam'
+os.getcwd()     #查看当前工作路径
+os.chdir('C:\\Window\\System32')        #改变当前工作路径
+os.makedirs('C:\\aa\\bb\\cc')       #创建文件夹,如果没有aa,bb也会创建aa和bb文件夹
+os.path.abspath('path')     #讲相对路径转换为绝对路径
+os.path.isabs('path')       #如果是绝对路径返回True，是相对路径返回False
+os.path.relpath(path,start)     #返回start开始到path的相对路径字符串，如无start，则从当前路径开始
+    os.path.relpath('C\\Windows', 'C:\\spam\\eggs')
+        out:'..\\..\\Windows'
+os.path.dirname('C:\\AA\\BB\\CC')       #取目录名臣
+    out:'C:\\AA\\BB'
+os.path.basename('C:\\AA\\BB\\CC')      #取文件名称
+    out:'CC'
+os.path.split('C:\\AA\\BB\\CC')     #同时取目录名和文件名,返回一个元祖
+    out:('C:\\AA\\BB', 'CC')
+('C:\\AA\\BB\\CC').split(os.path.sep)       #输出每个路径字符串列表
+    out:['C:', 'AA', 'BB', 'CC']
+os.path.getsize(path)       #输出路径下文件的字节数
+os.listdir(path)        #输出路径下文件名列表
+os.path.exists(path)        #文件或文件夹存在，返回True
+os.path.isfile(path)        #path参数存在且为文件，返回True
+os.path.isdir(path)     #path参数存在且为文件夹，返回True
+helo = open('C:\\Users\\daize\\Desktop\\test.txt')      #open()返回一个file对象,默认为'r'
+helo.read()     #读取helo中内容
+helo.readlines()    #讲helo内容取出得到一个字符串列表，每个字符串为helo中一行
+
+helo = open('C:\\Users\\daize\\Desktop\\test.txt', 'w')
+helo.write('haha')
+helo.close()
+helo = open('C:\\Users\\daize\\Desktop\\test.txt', 'a')
+helo.write('haha')
+helo.close()
+#'w'为清空文件并写入，'a'为不清空文件且添加内容。如对应路径文件不存在，会主动创建。在读取或写入后需要close()，然后才能再次打开。
+#write()方法不会像print()方法一样自动添加换行符(\n)，需要手动添加。
