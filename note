@@ -221,3 +221,21 @@ helo.write('haha')
 helo.close()
 #'w'为清空文件并写入，'a'为不清空文件且添加内容。如对应路径文件不存在，会主动创建。在读取或写入后需要close()，然后才能再次打开。
 #write()方法不会像print()方法一样自动添加换行符(\n)，需要手动添加。
+
+shelve      #例如可以保存配置，在此打开程序时加载这些配置
+import shelve
+shelfFile = shelve.open('mydata')       #定义的shelFile类似字典
+cats = ['a', 'b', 'c']      #创建cats列表
+shelfFile['cats'] = cats        #创建cats键，值为cats列表，即生成一个字典
+shelfFile.close()
+shelfFile = shelve.open('mydata')       #打开mydata，shelve默认可读可写
+shelfFile['cats']
+    out:['a', 'b', 'c']
+shelfFile.close()
+#是生成真正列表形式
+shelfFile = shelve.open('mydata')
+list(shelfFile.keys())
+    out:['cats']
+list(shelfFile.values())
+    out:[['a', 'b', 'c']]
+shelfFile.close()
