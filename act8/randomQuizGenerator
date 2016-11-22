@@ -4,7 +4,27 @@
 import random
 
 capitals = {'Alabama':'Montgomery','Alaska':'Juneau','Arizona':'Phoenix','Arkansas':'LittleRock','California':'Sacramento','Colorado':'Denver','Connecticut':'Hartford','Delaware':'Dover','Florida':'Tallahassee','Georgia':'Atlanta','Hawaii':'Honolulu','Idaho':'Boise','Illinois':'Springfield','Indiana':'Indianapolis','Iowa':'DesMoines','Kansas':'Topeka','Kentucky':'Frankfort','Louisiana':'BatonRouge','Maine':'Augusta','Maryland':'Annapolis','Massachusetts':'Boston','Michigan':'Lansing','Minnesota':'SaintPaul','Mississippi':'Jackson','Missouri':'JeffersonCity','Montana':'Helena','Nebraska':'Lincoln','Nevada':'CarsonCity','NewHampshire':'Concord','NewJersey':'Trenton','NewMexico':'SantaFe','NewYork':'Albany','NorthCarolina':'Raleigh','NorthDakota':'Bismarck','Ohio':'Columbus','Oklahoma':'OklahomaCity','Oregon':'Salem','Pennsylvania':'Harrisburg','RhodeIsland':'Providence','SouthCarolina':'Columbia','SouthDakota':'Pierre','Tennessee':'Nashville','Texas':'Austin','Utah':'SaltLakeCity','Vermont':'Montpelier','Virginia':'Richmond','Washington':'Olympia','WestVirginia':'Charleston','Wisconsin':'Madison','Wyoming':'Cheyenne'}
-print(list(capitals.keys()))
-print(capitals.keys())
-print(type(capitals.keys()))
-print(type(list(capitals.keys())))
+
+state = list(capitals.keys())
+random.shuffle(state)       #随机排列列表中的值
+#range()传递35，之后num变量+1,如果传递的是range(1,36)，列表值会超过范围
+for num in range(35):
+    quiz = open('C:\\Users\\daize\\Desktop\\pythonTEST\\autopython\\act8\\quizEX\\quiz_%s.txt' % (num+1), 'w')
+    answerFile = open('C:\\Users\\daize\\Desktop\\pythonTEST\\autopython\\act8\\quizEX\\answerFile_%s.txt' % (num+1), 'w')
+    quiz.write('Name:\n\nData:\n\nPeriod:\n\n')
+    quiz.write((' '*20) + 'Num:%s\n\n' % (num+1))
+    for i in range(50):
+        #get right and wrong answer
+        correct = capitals[state[i]]
+        wrong = list(capitals.values())
+        del wrong[wrong.index(correct)]
+        wrong = random.sample(wrong, 3)
+        answerOption = wrong + [correct]
+        random.shuffle(answerOption)
+        #write the questions and answers options to the quiz file
+        quiz.write('%s,where is the %s\'s capital ?\n' % (i+1, state[i]))
+        for j in range(4):
+            quiz.write('%s.%s\n' % ('ABCD'[j], answerOption[j]))
+        quiz.write('\n')
+        #write the answers to the answerFile
+        answerFile.write('%s,%s\n' % (i+1, 'ABCD'[answerOption.index(correct)]))
