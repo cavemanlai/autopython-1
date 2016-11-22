@@ -239,3 +239,5 @@ list(shelfFile.keys())
 list(shelfFile.values())
     out:[['a', 'b', 'c']]
 shelfFile.close()
+
+pprint.pformat()        #可保存变量
