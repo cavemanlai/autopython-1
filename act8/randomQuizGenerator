@@ -28,3 +28,5 @@ for num in range(35):
         quiz.write('\n')
         #write the answers to the answerFile
         answerFile.write('%s,%s\n' % (i+1, 'ABCD'[answerOption.index(correct)]))
+    quiz.close()
+    answerFile.close()
