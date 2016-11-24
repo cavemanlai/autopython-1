@@ -241,3 +241,71 @@ list(shelfFile.values())
 shelfFile.close()
 
 pprint.pformat()        #可保存变量
+
+
+【ACT9】
+import shutil       #在python程序中复制，移动，改名和删除文件
+shutil.copy(source,destinasion)     #复制文件，从source到destinasion，sor和des均为字符串，des入为文件名，则为复制后的新名字
+    shutil.copy('C:\\Windows\\aa', 'D:\\B')     #B为文件夹
+        out:'D:\\B\\aa
+    shutil.copy('C:\\Windows\\aa', 'D:\\bb')        #bb为文件名
+        out:'D:\\bb
+shuttil.copytree(source,destinasion)        #复制整个文件夹及包括的文件夹和文件，用法同shutil.copy()
+    shutil.copytree('C:\\AA', 'C:\\AA_BAK')
+        out:'C:\\AA_BAK'
+
+shutil.move(source,destinasion)     #剪切，des为文件夹，直接放到该文件夹下；des为文件名，放到目标目录下并改为des名，如同名，直接覆盖
+
+os.unlink(path)     #删除path处的文件
+os.rmdir(path)      #删除path处的文件夹，且必须为空文件夹
+shutil.rmtree(path)     #删除path处文件夹及其下所有文件夹和文件
+
+import send2trash       #删除文件发送到回收站，而非永久删除
+
+os.walk()       #遍历目录树
+for foldername, subfolders, filenames in os.walk('c:\\Windows'
+    print('current folder:' + foldername)
+    for subfolder in subfolders:
+        print(foldername,subfolder)
+    for filename in filenames:
+        print(foldername,filename)
+out:current folder A
+    subfolder A1
+    subfolder A2
+    filename a
+
+    current folder A1
+    subfolder A1-1
+    aubfolder A1-2
+    filename aa
+
+    current folder A2
+    xxxxxxxxx
+
+    current folder A1-1
+    xxxxxxxxx
+
+import zipfile      #查看压缩文件信息
+exampleZip = zipfile.ZipFile('example.zip')     #打开zip文件传递给变量，如open()
+exampleZip.namelist()       #返回zip包里的文件名的字符串列表
+    out:['a.txt', 'A/']
+aInfo = exampleZip.getinfo('a.txt')     #讲zip包内的文件信息传递给aInfo变量
+aInfo.file_size     #字节数
+    out:111
+aInfo.compress_size     #压缩后的字节数
+    out:22
+round(aInfo.file_size / aInfo.compress_size, 2)     #压缩比，四舍五入至第二位
+exampleZip.close()
+
+import zipfile      #解压缩
+exampleZip = zipfile.ZipFile('example.zip')
+exampleZip.extractall(path)     #解压缩包内所有文件至path，如path中文件夹不存在，则创建。没有path参数，默认解压到当前目录
+exampleZip.extract('a.txt', 'C:\\A')        #解压包内文件a.txt至C:\A目录下,返回值为解压后文件的绝对路径
+    out:'C:\\A\\a.txt'
+exampleZip.close()
+
+import zipfile      #创建和添加到zip文件
+newZip = zipfile.ZipFile('new.zip', 'w')        #如已有new.zip，则w会擦除原有文件
+newZip = zipfile.ZipFile('new.zip', 'a')        #如已有new.zip，则a会添加新内容到原有文件
+newZip.write('a.txt', compress_type=zipfile.ZIP_DEFAULTED)
+newZip.close()
