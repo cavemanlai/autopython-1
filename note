@@ -191,7 +191,7 @@ os.path.join('usr', 'bin', 'spam')
 os.getcwd()     #查看当前工作路径
 os.chdir('C:\\Window\\System32')        #改变当前工作路径
 os.makedirs('C:\\aa\\bb\\cc')       #创建文件夹,如果没有aa,bb也会创建aa和bb文件夹
-os.path.abspath('path')     #讲相对路径转换为绝对路径
+os.path.abspath('path')     #将相对路径转换为绝对路径
 os.path.isabs('path')       #如果是绝对路径返回True，是相对路径返回False
 os.path.relpath(path,start)     #返回start开始到path的相对路径字符串，如无start，则从当前路径开始
     os.path.relpath('C\\Windows', 'C:\\spam\\eggs')
@@ -245,7 +245,7 @@ pprint.pformat()        #可保存变量
 
 【ACT9】
 import shutil       #在python程序中复制，移动，改名和删除文件
-shutil.copy(source,destinasion)     #复制文件，从source到destinasion，sor和des均为字符串，des入为文件名，则为复制后的新名字
+shutil.copy(source,destinasion)     #复制文件，从source到destinasion，sor和des均为字符串，des如为文件名，则为复制后的新名字
     shutil.copy('C:\\Windows\\aa', 'D:\\B')     #B为文件夹
         out:'D:\\B\\aa
     shutil.copy('C:\\Windows\\aa', 'D:\\bb')        #bb为文件名
