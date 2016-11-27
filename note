@@ -19,6 +19,7 @@ L.index()  #返回所找值的下标
 L.append()
 L.insert()
 L.sort()    #方法无返回值，print（L.sort())为None
+sorted()    #会返回一个新的已经排好序的 list
 print(L[random.randict(0,len(L)-1)])
 ('hello',)    #有',',是tuple，无','，是str
 L1=[1，2，3]
