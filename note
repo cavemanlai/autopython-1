@@ -310,3 +310,8 @@ newZip = zipfile.ZipFile('new.zip', 'w')        #如已有new.zip，则w会擦�
 newZip = zipfile.ZipFile('new.zip', 'a')        #如已有new.zip，则a会添加新内容到原有文件
 newZip.write('a.txt', compress_type=zipfile.ZIP_DEFAULTED)
 newZip.close()
+
+
+【ACT10】
+raise Excention('haha')
+    out:错误信息
