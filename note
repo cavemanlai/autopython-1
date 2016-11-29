@@ -313,4 +313,13 @@ newZip.close()
 
 
 【ACT10】
-raise Excention('haha')
+raise Excention('haha')     #报错时输出的内容
+
+assert      #断言
+a = 1
+assert a == 1, 'correct'
+a = 2
+assert a == 1, 'incorrect'
+    out:AssertionError: incorrect
+
+

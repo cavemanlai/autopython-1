@@ -5,7 +5,7 @@ import http.cookiejar
 
 # url = 'http://192.168.10.61/zabbix/chart2.php?graphid=897&period=3600&stime=20161128130648&updateProfile=1&profileIdx=web.screens&profileIdx2=897&sid=254050934e847cac&width=1776&screenid=&curtime=1480319746979'
 url = 'http://192.168.10.61/zabbix/index.php'
-value = {'Username': 'Admin', 'Password': 'fairlink'}
+value = {'name': 'Admin', 'password': 'fairlink', 'autologin': '1', 'enter': 'Sign+in', 'request': ''}
 data = urllib.parse.urlencode(value).encode('utf-8')
 cj = http.cookiejar.CookieJar()
 opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cj))
