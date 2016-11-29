@@ -314,4 +314,3 @@ newZip.close()
 
 【ACT10】
 raise Excention('haha')
-    out:错误信息
