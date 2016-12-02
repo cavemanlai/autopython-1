@@ -6,7 +6,10 @@ import datetime
 import mysql.connector
 # import paramiko
 import sshtunnel
-
+import smtplib
+from email.mime.image import MIMEImage
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
 
 with sshtunnel.SSHTunnelForwarder(
         ('192.168.10.61', 22),
