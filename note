@@ -321,5 +321,14 @@ assert a == 1, 'correct'
 a = 2
 assert a == 1, 'incorrect'
     out:AssertionError: incorrect
+运行带有断言的程序是，加 -O 参数，可不执行断言内容
 
-
+logging     #模块
+结合例子factorialLog.py
+import logging
+logging.basicConfig(level=logging.DEBUG, format=' %(asctime)s - %(levelname)s - %(message)s')
+logging.debug('Start of program')
+logging.error('End of program')
+DEBUG INFO WARNING ERROR CRITICAL       #级别,basicConfig的level参数可控制界别
+logging.disable(logging.CRITICAL)       #禁用某级别（及以下级别）的日志
+logging.basicConfig(filename='my.txt'       #filename参数将日志保存到文件
