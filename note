@@ -1,3 +1,9 @@
+bytearray(b'test_central_1').decode()        #bytearray,即字节数组转换为str
+    out:test_central_1
+
+datetime.datetime.now().strftime('%y%m%d%H%M%S')        #将当前时间按照要求格式化
+    out:20161206174715
+
 【ACT4】
 L[1]
 L[0]

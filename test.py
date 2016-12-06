@@ -11,6 +11,12 @@ from email.mime.image import MIMEImage
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
+# ssh = paramiko.SSHClient()
+# ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+# ssh.connect('192.168.10.61', 22, 'root', 'fairlink')
+# stdin,stdout,stderr = ssh.exec_command('free -m')
+# print(stdout.read())
+
 with sshtunnel.SSHTunnelForwarder(
         ('192.168.10.61', 22),
         ssh_password='fairlink',
@@ -24,7 +30,6 @@ with sshtunnel.SSHTunnelForwarder(
     print(results[0])
     cursor.close()
     cnn.close()
-
 
 url = 'http://192.168.10.61/zabbix/index.php'
 value = {'name': 'Admin', 'password': 'fairlink', 'autologin': '1', 'enter': 'Sign in', 'request': ''}
@@ -40,10 +45,26 @@ file = open('C:\\Users\\daize\\Desktop\\1.png', 'wb')
 file.write(req.read())
 file.close()
 
+msg = MIMEMultipart('related')
+msg['Subject'] = 'Zabbix'
+msg['From'] = 'daize.song@fairlinkcentury.com'
+msg['To'] = 'daize.song@fairlinkcentury.com'
+message = '''
+<p>test graph</p>
+<p><img src="cid:image1"></p>
+'''
+message = MIMEText(message, 'html')
+msg.attach(message)
+file = open('C:\\Users\\daize\\Desktop\\1.png', 'rb')
+# print(file.read())
+msgImage = MIMEImage(file.read())
+file.close()
+msgImage.add_header('Content-ID', '<image1>')
+msg.attach(msgImage)
 
-# ssh = paramiko.SSHClient()
-# ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-# ssh.connect('192.168.10.61', 22, 'root', 'fairlink')
-# stdin,stdout,stderr = ssh.exec_command('free -m')
-# print(stdout.read())
+smtp = smtplib.SMTP_SSL('smtp.exmail.qq.com', 465)
+# smtp.connect('smtp.exmail.qq.com')
+smtp.login('daize.song@fairlinkcentury.com', 'song123')
+smtp.sendmail(msg['From'], msg['To'], msg.as_string())
+smtp.quit()
 
